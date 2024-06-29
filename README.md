@@ -10,6 +10,7 @@ const settings = {
     "CLIENT_ID": 0,
     "CLIENT_SECRET": "aBCdefgHIjklmNoPqrstuVwxyz"
 }
+```
 
 ## License
 MIT
