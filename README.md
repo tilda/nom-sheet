@@ -12,5 +12,7 @@ const settings = {
 }
 ```
 
+The Apps Script version of git is [clasp](https://github.com/google/clasp), you may want to use it.
+
 ## License
 MIT
