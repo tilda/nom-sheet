@@ -5,6 +5,7 @@ Apps Script code used for my [osu! nomination log](https://docs.google.com/sprea
 Published for learning purposes, don't expect it to be a drop-in script.
 
 OAuth credentials are stored in `Settings.js` (local) / `Settings.gs` (remote). It uses the following format:
+
 ```js
 const settings = {
     "CLIENT_ID": 0,
@@ -15,4 +16,5 @@ const settings = {
 The Apps Script version of git is [clasp](https://github.com/google/clasp), you may want to use it.
 
 ## License
+
 MIT
