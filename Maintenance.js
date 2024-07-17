@@ -1,8 +1,4 @@
 function onOpen() {
-    createMenu()
-}
-
-function createMenu() {
     SpreadsheetApp.getUi().createMenu("👁️ Maintenance")
         .addItem("Refresh Map Metadata", "refreshSelectedSet")
         .addToUi()
