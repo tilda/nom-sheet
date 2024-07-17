@@ -1,4 +1,4 @@
-function getOauthToken() {
+function getOauthToken_() {
     const props = PropertiesService.getUserProperties()
     let secondsUntilExp = props.getProperty('OAUTH_TOKEN_EXPIRATION') - convertToSeconds(Date.now())
     
@@ -22,4 +22,19 @@ function getOauthToken() {
     }
 
     return props.getProperty('OAUTH_TOKEN')
+}
+
+function fetchWithAuth_(endpoint) {
+    let map = UrlFetchApp.fetch(`https://osu.ppy.sh/api/v2/${endpoint}`, {
+        'headers': {
+            'Authorization': 'Bearer ' + getOauthToken_(),
+            'Accept': 'application/json'
+        }
+    })
+
+    return JSON.parse(map.getContentText())
+}
+
+function getMapset(id) {
+    return fetchWithAuth_(`beatmapsets/${id}`)
 }
