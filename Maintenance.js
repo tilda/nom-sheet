@@ -12,14 +12,15 @@ function refreshSelectedSet() {
     let sheet = SpreadsheetApp.getActiveSpreadsheet()
     let cell = SpreadsheetApp.getCurrentCell()
 
-    Logger.log(`Update requested for column ${cell.getColumn()}, row ${cell.getRow()}`)
+    Logger.log(`Update requested for row ${cell.getRow()}`)
 
-    if (cell.getColumn() == 4 && cell.getRow() > 3) {
+    if (cell.getRow() > 3) {
         let mapID = sheet.getRange(`A${cell.getRow()}`).getValue()
         let mapAuthor = sheet.getRange(`C${cell.getRow()}`)
+        let mapsetCell = sheet.getRange(`D${cell.getRow()}`)
         let mapInfo = getMapset(mapID)
 
-        cell.setFormula(`=HYPERLINK("https://osu.ppy.sh/beatmapsets/${mapID}", "${mapInfo.artist} - ${mapInfo.title}")`)
+        mapsetCell.setFormula(`=HYPERLINK("https://osu.ppy.sh/beatmapsets/${mapID}", "${mapInfo.artist} - ${mapInfo.title}")`)
         mapAuthor.setValue(mapInfo.creator)
 
         return sheet.toast(`Updated row ${cell.getRow()}`)
