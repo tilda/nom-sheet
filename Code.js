@@ -19,7 +19,6 @@ function _onEdit(e) {
         
             if (mapID == null) {
                 allInfoRows.clear()
-                link.clear()
                 Logger.log(`Cleared row ${row}`)
                 break
             } else {
