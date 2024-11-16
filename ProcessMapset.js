@@ -36,6 +36,11 @@ function _onEdit(e) {
                 break
             }
         }
+        case 6: {
+            let note = e.range.getNote()
+            e.range.setBackground(((note && !note.includes('nohighlight')) ? 'lightsalmon' : null))
+            break
+        }
         case 8: { // Status update, check if it's been nominated
             if (e.value === 'Nominated') {
                 let nomDate = e.source.getRange(`F${row}`)
