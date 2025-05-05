@@ -6,7 +6,7 @@ function _onEdit(e) {
     let row = e.range.getRow()
 
     switch (e.range.getColumn()) {
-        case 1: { // Map ID update, populate info there
+        case SheetRows.MAP_ID: { // Map ID update, populate or remove any info needed there
             if (row <= 3) {
                 break // Avoid accidental overwrites of info at the top
             }
@@ -36,12 +36,12 @@ function _onEdit(e) {
                 break
             }
         }
-        case 6: {
+        case SheetRows.NOM_DATE: { // Add hint color to indicate unclean rank if needed
             let note = e.range.getNote()
             e.range.setBackground(((note && !note.includes('nohighlight')) ? 'lightsalmon' : null))
             break
         }
-        case 8: { // Status update, check if it's been nominated
+        case SheetRows.STATUS: { // Status update, check if it's been nominated
             if (e.value === 'Nominated') {
                 let nomDate = e.source.getRange(`F${row}`)
                 nomDate.setValue(Utilities.formatDate(new Date(), "GMT-6", "MM/dd/y"))
