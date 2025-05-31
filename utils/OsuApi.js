@@ -4,7 +4,7 @@ function convertToSeconds_(ms) {
 
 function getOauthToken_() {
     const props = PropertiesService.getUserProperties()
-    let secondsUntilExp = props.getProperty('OAUTH_TOKEN_EXPIRATION') - convertToSeconds(Date.now())
+    let secondsUntilExp = props.getProperty('OAUTH_TOKEN_EXPIRATION') - convertToSeconds_(Date.now())
     
     if (props.getProperty('OAUTH_TOKEN') !== null && ((props.getProperty('OAUTH_TOKEN_EXPIRATION') && secondsUntilExp >= 600))) {
         Logger.log(`OAuth token valid for ${secondsUntilExp}s`)
@@ -21,7 +21,7 @@ function getOauthToken_() {
         let tokenResponse = JSON.parse(tokenRequest.getContentText())
     
         props.setProperty('OAUTH_TOKEN', tokenResponse.access_token)
-        props.setProperty('OAUTH_TOKEN_EXPIRATION', (convertToSeconds(Date.now()) + tokenResponse.expires_in))
+        props.setProperty('OAUTH_TOKEN_EXPIRATION', (convertToSeconds_(Date.now()) + tokenResponse.expires_in))
         Logger.log('Renewed OAuth token')
     }
 
