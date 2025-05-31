@@ -1,7 +1,3 @@
-function convertToSeconds(ms) {
-    return Math.floor(ms / 1000)
-}
-
 function _onEdit(e) {
     let row = e.range.getRow()
 

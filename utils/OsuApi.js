@@ -1,3 +1,7 @@
+function convertToSeconds_(ms) {
+    return Math.floor(ms / 1000)
+}
+
 function getOauthToken_() {
     const props = PropertiesService.getUserProperties()
     let secondsUntilExp = props.getProperty('OAUTH_TOKEN_EXPIRATION') - convertToSeconds(Date.now())
